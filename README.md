@@ -8,8 +8,8 @@ Exlisp.Tokenizer.transform("(+ 1 2)")
 # => ["(", "+", "1", "2", ")"]
 ```
 
-The next step is to write a parser which should ideally use the tokenizer to
-generate something like this:
+The next step is to write a parser which uses the tokenizer to generate
+something like this: 
 
 ```elixir
 Exlisp.Parser.transform("(+ 1 2)")
