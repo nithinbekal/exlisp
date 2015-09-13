@@ -14,5 +14,22 @@ defmodule Exlisp.TokenizerTest do
     assert T.transform("(1337)") == ["(", "1337", ")"]
     assert T.transform("(+ 24 42)") == ["(", "+", "24", "42", ")"]
   end
+
+  test "tokenizing expressions with extra spaces" do
+    assert T.transform("(    )") == ["(", ")"]
+    assert T.transform("( +  24 42  )") == ["(", "+", "24", "42", ")"]
+  end
+
+  test "tokenizing words" do
+    assert T.transform("(define pi 3.14)") == ["(", "define", "pi", "3.14", ")"]
+    assert T.transform("(define golden-ratio 1.59)") ==
+      ["(", "define", "golden-ratio", "1.59", ")"]
+  end
+
+  test "complex expressions" do
+    assert T.transform(" (define square (lambda (x) (* x x))) ")
+      == ["(", "define", "square", "(", "lambda", "(", "x", ")",
+              "(", "*", "x", "x", ")", ")", ")"]
+  end
 end
 
