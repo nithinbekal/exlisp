@@ -13,5 +13,5 @@ generate something like this:
 
 ```elixir
 Exlisp.Parser.transform("(+ 1 2)")
-# => {:+, 1, 2}
+# => [:+, 1, 2]
 ```
