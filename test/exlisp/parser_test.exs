@@ -14,4 +14,8 @@ defmodule Exlisp.ParserTest do
         [:*, 2, 3, 4]
       ] ]
   end
+
+  test "throws exception on missing parentheses" do
+    assert catch_throw(P.transform("(+ 1 (* 3 8)")) == :missing_rparen
+  end
 end

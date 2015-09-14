@@ -38,6 +38,10 @@ defmodule Exlisp.Parser do
     _parse(rest, level-1, acc)
   end
 
+  defp _parse_inner([], _) do
+    throw :missing_rparen
+  end
+
   defp _parse_inner(["(" | rest], acc) do
     { remaining, tree } = _parse_inner(rest, [])
     _parse_inner(remaining, [tree | acc])
