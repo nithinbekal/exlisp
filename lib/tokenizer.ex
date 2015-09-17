@@ -6,7 +6,7 @@ defmodule Exlisp.Tokenizer do
   end
 
   defp _tokenize([ch | rest], [], tokens)
-  when ch in ["", " "] do
+  when ch in ["", " ", "\n"] do
     _tokenize(rest, [], tokens)
   end
 
@@ -35,7 +35,7 @@ defmodule Exlisp.Tokenizer do
     _tokenize(rest, [ch | acc], tokens)
   end
 
-  defp _tokenize([], acc, tokens) do
+  defp _tokenize([], _acc, tokens) do
     Enum.reverse(tokens)
   end
 

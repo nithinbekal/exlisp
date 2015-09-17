@@ -31,5 +31,9 @@ defmodule Exlisp.TokenizerTest do
       == ["(", "define", "square", "(", "lambda", "(", "x", ")",
               "(", "*", "x", "x", ")", ")", ")"]
   end
+
+  test "expressions ending with newline" do
+    assert T.transform("(+ 1 2)\n") == ["(", "+", "1", "2", ")"]
+  end
 end
 
